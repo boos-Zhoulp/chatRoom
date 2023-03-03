@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <title>聊天室</title>
+  <link rel="Bookmark" href="images/favicon.ico" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="lib/jquery-mCustomScrollbar/css/jquery.mCustomScrollbar.min.css" />
+  <link rel="stylesheet" href="lib/jquery-emoji/css/jquery.emoji.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <div class="container" id="container" style="display: block;">
+    <!-- 注册页面 -->
+    <div class="form-container  register_box">
+      <div class="form">
+        <h1>sign up</h1>
+        <div style="height: 20px"></div>
+        <input type="text" name="username" id="register_username" placeholder="userName...">
+        <input type="email" name="email" id="register_email" placeholder="Email...">
+        <input type="password" name="password" id="register_password" placeholder="Password...">
+        <ul class="avatar" id="register_avatar">
+          <li class="now"><img src="images/xyj01.jpg" alt="" /></li>
+          <li><img src="images/xyj02.jpg" alt="" /></li>
+          <li><img src="images/xyj03.jpg" alt="" /></li>
+          <li><img src="images/xyj04.jpg" alt="" /></li>
+          <li><img src="images/xyj05.jpg" alt="" /></li>
+          <li><img src="images/wz01.jpg" alt="" /></li>
+          <li><img src="images/wz02.jpg" alt="" /></li>
+          <li><img src="images/wz03.jpg" alt="" /></li>
+          <li><img src="images/wz04.jpg" alt="" /></li>
+          <li><img src="images/wz05.jpg" alt="" /></li>
+        </ul>
+        <div style="height: 20px"></div>
+        <button id="register">sign up</button>
+      </div>
+    </div>
+    <!-- 登录页面 -->
+    <div class="form-container login_box">
+      <div class="form">
+        <h1>sign in</h1>
+        <div style="height: 30px"></div>
+        <input type="text" name="userame" id="username" placeholder="userName...">
+        <input type="password" name="password" id="password" placeholder="Password...">
+        <a href="#" class="forget">forget your password</a>
+        <div style="height: 30px"></div>
+        <button class="weui-btn" id="loginBtn">sign in</button>
+      </div>
+    </div>
+
+    <!-- 覆盖容器 -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <!-- 覆盖左边 -->
+        <div class="overlay-penal overlay-left-container">
+          <h1>welcome back!</h1>
+          <p>
+            To keep connected with us please login with your personal info
+          </p>
+          <button class="ghost" id="signIn">sign in</button>
+        </div>
+        <!-- 覆盖右边 -->
+        <div class="overlay-penal overlay-right-container">
+          <h1>Hello Friend!</h1>
+          <p>
+            Enter your personal details and start journey with us
+          </p>
+          <button class="ghost" id="signUp">sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-chat" id="container-chat" style="display: none;">
+    <div class="user-list">
+      <div class="header">
+        <div class="avatar">
+          <img class="img avatar_url" src="images/哆啦A梦.jpg" alt="" />
+        </div>
+        <div class="info">
+          <h3 class="username">周龙平</h3>
+          <h3 class="email">2304009012@qq.com</h3>
+        </div>
+      </div>
+      <div class="title">
+        <h3>在线用户</h3>
+        <img src="images/人群 (1).png" alt="">
+      </div>
+      <ul>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="box-hd">
+        <h3>某某的发言基地(<span id="userCount"></span>)</h3>
+      </div>
+      <div class="box-bd">
+        <!--
+        <div class="system">
+          <p class="message_system">
+            <span class="content">"往事随风"邀请你和"Boy"加入了群聊</span>
+          </p>
+        </div>
+        <div class="message-box">
+          <div class="my message">
+            <img class="avatar" src="images/avatar2.jpg" alt="" />
+            <div class="content">
+              <div class="bubble">
+                <div class="bubble_cont">在干嘛</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="message-box">
+          <div class="other message">
+            <img class="avatar" src="images/avatar02.jpg" alt="" />
+            <div class="content">
+              <div class="nickname">小美</div>
+              <div class="bubble">
+                <div class="bubble_cont">吃饭</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      -->
+      </div>
+      <div class="box-ft">
+        <div class="toolbar">
+          <a href="javascript:;" title="表情" class="face"></a>
+          <a href="javascript:;" title="截屏" class="screen-cut"></a>
+          <a href="javascript:;" title="图片" class="file">
+            <label for="file"></label>
+            <input type="file" id="file" style="display: none;">
+          </a>
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="content">
+          <div class="text" id="content" contenteditable></div>
+        </div>
+        <div class="action">
+          <a class="btn-close" id="btn-close" href="">关闭(C)</a>
+          <a class="btn-send" id="btn-send"  href="javascript:;">发送</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 引入socketio -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script src="lib/jquery-mCustomScrollbar/script/jquery.mCustomScrollbar.min.js"></script>
+  <script src="lib/jquery-emoji/js/jquery.emoji.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

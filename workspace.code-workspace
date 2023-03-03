@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "websocket滑动登录页",
+		"files.associations": {
+			"F1.C": "cpp"
+		}
+	}
+}
